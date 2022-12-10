@@ -1,9 +1,11 @@
 {
+  "type": "module",
   "name": "server",
   "version": "1.0.0",
   "description": "Node.js HTTP Web server for the Rotten Apples Web application",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
