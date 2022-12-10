@@ -5,7 +5,7 @@ import { LinkContainer } from 'react-router-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { logout } from '../../actions/userActions'
 import './nav.css'
-import {useLocation} from "react-router";
+import { useLocation } from "react-router";
 
 const NavbarComp = () => {
   const dispatch = useDispatch()

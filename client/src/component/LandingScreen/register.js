@@ -33,7 +33,7 @@ const Register = () => {
     if (userInfo) {
       navigate(redirect)
     }
-  }, [userInfo, redirect])
+  }, [userInfo, redirect, navigate])
 
   const submitHandler = (event) => {
     event.preventDefault()

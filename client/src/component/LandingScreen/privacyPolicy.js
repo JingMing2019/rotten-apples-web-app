@@ -35,7 +35,7 @@ const PrivacyPolicy = () => {
             Policy has been created with the help of the{" "}
             <a
               href="https://www.privacypolicies.com/blog/privacy-policy-template/"
-              target="_blank"
+              target="_blank" rel="noreferrer"
             >
               <span className="wd-text">Privacy Policy Template</span>
             </a>
@@ -119,7 +119,7 @@ const PrivacyPolicy = () => {
                 <strong>Website</strong> refers to Too Tasty, accessible from{" "}
                 <a
                   href="http://www.rottenapples.com"
-                  rel="external nofollow noopener"
+                  rel="external nofollow noopener noreferrer"
                   target="_blank"
                 >
                   http://www.rottenapples.com
@@ -198,7 +198,7 @@ const PrivacyPolicy = () => {
               objects?&quot; available at{" "}
               <a
                 href="https://helpx.adobe.com/flash-player/kb/disable-local-shared-objects-flash.html#main_Where_can_I_change_the_settings_for_disabling__or_deleting_local_shared_objects_"
-                rel="external nofollow noopener"
+                rel="external nofollow noopener noreferrer"
                 target="_blank"
               >
                 https://helpx.adobe.com/flash-player/kb/disable-local-shared-objects-flash.html#main_Where_can_I_change_the_settings_for_disabling__or_deleting_local_shared_objects_
@@ -221,7 +221,7 @@ const PrivacyPolicy = () => {
             as soon as You close Your web browser. Learn more about cookies:{" "}
             <a
               href="https://www.privacypolicies.com/blog/privacy-policy-template/#Use_Of_Cookies_Log_Files_And_Tracking"
-              target="_blank"
+              target="_blank" rel="noreferrer"
             >
               Cookies by PrivacyPolicies Generator
             </a>
@@ -499,7 +499,7 @@ const PrivacyPolicy = () => {
                 with the Privacy Policy of Google:{" "}
                 <a
                   href="https://www.google.com/intl/en/policies/privacy/"
-                  rel="external nofollow noopener"
+                  rel="external nofollow noopener noreferrer"
                   target="_blank"
                 >
                   https://www.google.com/intl/en/policies/privacy/

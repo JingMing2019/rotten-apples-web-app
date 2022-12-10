@@ -29,7 +29,7 @@ const LogInScreen = () => {
     if (userInfo) {
       navigate(redirect)
     }
-  }, [userInfo, redirect])
+  }, [userInfo, redirect, navigate])
 
   return (
     <>
