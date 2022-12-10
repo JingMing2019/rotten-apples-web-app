@@ -1,0 +1,15 @@
+.btn-outline-black {
+    color: black!important;
+    border-color: black!important;
+    text-decoration:none!important;
+}
+.btn-link-black {
+    font-weight: 400;
+    color: black!important;
+    text-decoration:none!important;
+}
+
+.dropdown-item:focus, .dropdown-item:hover {
+    background-color:#82E0AA !important;
+    color: black;}
+
