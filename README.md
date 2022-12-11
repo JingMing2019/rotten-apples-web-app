@@ -10,7 +10,7 @@ Register, login, <br>
 home page: display most popular and recent reviewed books<br>
 book details page: where log-in users can write reviews and click likes,<br>
 profile page, edit profile page,<br>
-search books from Google APT and store book in local database
+search books from Google API and store book in local database
 
 **Three user roles:**<br>
 Reader: browse book and write book reviews<br>
