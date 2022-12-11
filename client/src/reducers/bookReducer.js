@@ -28,10 +28,10 @@ import {
   BOOK_REVIEWS_REQUEST, BOOK_REVIEWS_SUCCESS, BOOK_REVIEWS_FAIL, BOOK_REVIEWS_RESET,
 } from "../constants/bookConstants"
 
-export const bookListReducer = (state = { restartants: [] }, action) => {
+export const bookListReducer = (state = { books: [] }, action) => {
   switch (action.type) {
     case BOOK_LIST_REQUEST:
-      return { loading: true, restartants: [] }
+      return { loading: true, books: [] }
     case BOOK_LIST_SUCCESS:
       return { loading: false, books: action.payload }
     case BOOK_LIST_FAIL:
@@ -100,7 +100,7 @@ export const bookCreateReducer = (state = {}, action) => {
   }
 }
 
-export const bookRencentReviewedReducer = (
+export const bookRecentReviewedReducer = (
   state = { books: [] },
   action
 ) => {

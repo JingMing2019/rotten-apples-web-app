@@ -17,6 +17,8 @@ const ReviewItems = ({ review }) => {
         dispatch(deleteReview(review.book, review._id))
     }
 
+    console.log(userInfo)
+
     return (
         <>
 
