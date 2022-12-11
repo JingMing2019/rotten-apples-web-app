@@ -3,7 +3,6 @@ import Book from '../models/bookModel.js'
 import { Review } from '../models/reviewModel.js'
 import * as BookDao from "../daos/bookDao.js";
 import {authAdmin, authWriter} from "../middlewares/authMiddleware.js";
-// import {USER_ROLE_ADMIN} from "../constants/userConstant.js";
 
 // @desc    Fetch all books
 // @route   GET /api/books
