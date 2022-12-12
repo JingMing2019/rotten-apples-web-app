@@ -14,7 +14,7 @@ const Searchbar = () => {
 
   return (
     <>
-      <div className='flex mt-4'>
+      <div className='flex mt-2'>
         <div className="row">
           <div className="col-11">
             <input className="search-bar form-control"

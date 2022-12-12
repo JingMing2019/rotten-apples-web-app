@@ -45,8 +45,8 @@ body {
     overflow: hidden;
 }
 .homepage-card-img {
-    width: 350px;
-    height: 438px;
+    width: 175px;
+    height: 210px;
     overflow: hidden;
     object-fit: cover;
 }

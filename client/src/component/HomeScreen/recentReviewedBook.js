@@ -31,7 +31,7 @@ const RecentReviewedBook = () => {
       <Row className="justify-content-md-center">
         {books &&
           books.map((book) => (
-            <Col key={book._id} sm={12} md={6} lg={4} xl={3}>
+            <Col key={book._id} sm={12} md={6} lg={4} xl={2}>
               <ReviewElement book={book} />
             </Col>
           ))}
