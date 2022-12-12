@@ -133,7 +133,7 @@ const Register = () => {
               </Form.Group>
 
               <button type="submit"
-                      className="btn btn-outline-success hero-btn"
+                      className="btn btn-primary text-black hero-btn"
                       disabled={!selectPrivacy}
               >
                 Sign up
