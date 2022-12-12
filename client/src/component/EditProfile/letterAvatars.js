@@ -37,7 +37,7 @@ const LetterAvatars = ({ name = 'Alice Wonderland' }) => {
     return (
         <>
             <Stack direction="row" spacing={2}>
-                <Avatar className="bg-success text-black"  {...stringAvatar(name)} />
+                <Avatar className="bg-primary text-black"  {...stringAvatar(name)} />
 
             </Stack>
         </>

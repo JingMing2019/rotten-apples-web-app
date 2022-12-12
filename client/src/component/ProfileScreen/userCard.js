@@ -27,10 +27,10 @@ const UserCard = ({
                     </div>
                     <h3 className="user-card-name text-black">{profile.name}
                     </h3>
-                    <span className="badge rounded-pill bg-success text-black disabled">{profile.role}</span>
+                    <span className="badge rounded-pill bg-primary text-black disabled">{profile.role}</span>
                     <p className="text-black">{profile.bio}</p>
                     <Link to="/edit">
-                        <button type="reset" className="btn rounded-pill bg-success fw-bold mt-2">Edit Profile</button>
+                        <button type="reset" className="btn bg-primary mt-2">Edit Profile</button>
                     </Link>
                 </div>
             </div>
