@@ -36,7 +36,6 @@ const AddBook = () => {
 
     useEffect(() => {
         // setFormError('')
-        console.log(created)
         if (created) {
             navigate(`/book/${created._id}`);
             dispatch(resetCreateBook());

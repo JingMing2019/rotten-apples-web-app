@@ -102,7 +102,7 @@ const updateBook = asyncHandler(async (req, res) => {
 // @access  Public
 // TODO: next
 const getTopBooks = asyncHandler(async (req, res) => {
-  const books = await Book.find({}).sort({ rating: -1 }).limit(3)
+  const books = await Book.find({}).sort({ rating: -1 }).limit(4)
 
   res.json(books)
 })
@@ -114,7 +114,7 @@ const getRecentReviewedBooks = asyncHandler(async (req, res) => {
   const books = await Review.find({})
     .sort({ createdAt: -1 })
     .populate('book')
-    .limit(3)
+    .limit(4)
 
   res.json(books)
 })
