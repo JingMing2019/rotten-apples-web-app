@@ -114,11 +114,24 @@ export const saveGoogleBook = (book) => async (dispatch) => {
     })
   }
 }
-export const register = (book) => async (dispatch) => {
+export const register = (book) => async (dispatch, getState) => {
   try {
     // fetching data
     dispatch({ type: BOOK_CREATE_REQUEST })
-    const { data } = await axios.post(BOOKS_API, book)
+
+    // generate token
+    const {
+      userLogin: { userInfo },
+    } = getState()
+
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    }
+
+    const { data } = await axios.post(BOOKS_API, book, config)
 
     // fetch success
     dispatch({
