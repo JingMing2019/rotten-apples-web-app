@@ -41,7 +41,7 @@ const userSchema = mongoose.Schema(
     location: {
       type: String,
       required: true,
-      default: 'Boston'
+      default: 'San Jose'
     },
     likedBooks: [
       {

@@ -35,7 +35,7 @@ export const listBookReviews = (bid) => async (dispatch) => {
   }
 }
 
-export const createBookReview = (bookId, review,setIsSending) => async (
+export const createBookReview = (bookId, review, setIsSending) => async (
     dispatch,
     getState
 ) => {

@@ -17,8 +17,6 @@ const ReviewItems = ({ review }) => {
         dispatch(deleteReview(review.book, review._id))
     }
 
-    console.log(userInfo)
-
     return (
         <>
 
@@ -48,7 +46,7 @@ const ReviewItems = ({ review }) => {
 
 
                     <br/>
-                    {userInfo && userInfo.role === 'admin' && (
+                    {userInfo && (userInfo.role === 'admin' || userInfo._id === review.user) && (
                         <Link to="#">
                             <i onClick={deleteHandler} className="fas fa-remove fa-pull-right"/>
                         </Link>
