@@ -1,16 +1,40 @@
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import React, {useCallback, useEffect, useState} from 'react'
+import axios from "axios";
+import {GOOGLE_API} from "../../constants/apiConstants";
+import GoogleSearchBookList from "../google-search/googleSearchBookList";
+import {useNavigate} from "react-router-dom";
 
-const Searchbar = () => {
-
+const Searchbar = ({keyword}) => {
   const navigate = useNavigate()
 
-  const [keyword, setKeyword] = useState('')
+  const [keywordInput, setKeywordInput] = useState(keyword)
+  const [books, setBooks] = useState(null)
+
+  console.log(keywordInput, keyword)
+
+  const searchByKeyword = useCallback(async (keyword) => {
+    try {
+      const response = await axios.get(`${GOOGLE_API}/search/${keyword}`);
+      setBooks(response.data.data.items)
+    } catch(error) {
+      console.log(error)
+    }
+  }, [setBooks])
 
   // When performs search, navigate to '/search/keyword' html
   const searchButtonHandler = () => {
-    navigate(`/search/${keyword}`)
+    navigate(`/search/${keywordInput}`)
   }
+
+  useEffect(() => {
+    if (keyword) {
+      searchByKeyword(keyword).then(() => {})
+    } else {
+      setKeywordInput('')
+      setBooks(null)
+    }
+      }, [searchByKeyword, keyword]
+  )
 
   return (
     <>
@@ -20,8 +44,8 @@ const Searchbar = () => {
             <input className="search-bar form-control"
                    type="text"
                    placeholder="Search"
-                   value={keyword}
-                   onChange={event => setKeyword(event.target.value)}/>
+                   value={keywordInput}
+                   onChange={event => setKeywordInput(event.target.value)}/>
           </div>
           <div className="col-1">
             <button type="button"
@@ -31,7 +55,8 @@ const Searchbar = () => {
             </button>
           </div>
         </div>
-        </div>
+      </div>
+      {books && <GoogleSearchBookList books={books} />}
     </>
   )
 }
