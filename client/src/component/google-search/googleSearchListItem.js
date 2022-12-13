@@ -3,6 +3,7 @@ import { Link, } from 'react-router-dom'
 import './google-search.css'
 import { saveGoogleBook } from '../../actions/bookActions'
 import { useDispatch, } from 'react-redux'
+import sampleCover from "../../vendors/img/book-cover-sample.png"
 
 // `book` is under the Google books format
 const GoogleSearchListItem = ({ book }) => {
@@ -18,7 +19,7 @@ const GoogleSearchListItem = ({ book }) => {
         <li className="text-white list-group-item justify-content-between align-items-center">
           <div className="homepage-list-child row">
             <div className="col-12 col-md-4">
-              <img className="google-search-img" src={book.volumeInfo.imageLinks.thumbnail} alt="book thumbnail"/>
+              <img className="google-search-img" src={book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : sampleCover} alt="book thumbnail"/>
             </div>
             <div className="text p-2 col-md-8">
               <h5>Title: {book.volumeInfo.title}</h5>

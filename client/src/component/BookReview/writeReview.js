@@ -27,7 +27,7 @@ const WriteReview = () => {
                 comment,
                 isAnonymous,
 
-            },setIsSending)
+            }, setIsSending)
         )
     }
 
@@ -53,7 +53,7 @@ const WriteReview = () => {
                     name="simple-controlled"
                     value={rating}
                     onChange={(e) => {
-                        setRating(parseInt(e.target.value))
+                        rating !== parseInt(e.target.value) && setRating(parseInt(e.target.value))
                     }}
                     disabled={!userInfo}
                 />
@@ -87,7 +87,7 @@ const WriteReview = () => {
                         type="submit"
                         className="btn btn-success"
                         onClick={submitReviewHandler}
-                        disabled={isSending || !userInfo}
+                        disabled={isSending || !userInfo || (rating === 0 && comment === "")}
                     >
                         Send
                     </button>

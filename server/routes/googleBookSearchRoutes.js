@@ -1,5 +1,5 @@
 import express from 'express'
-import { findBookByKeyword, findBookDetailByID, saveGoogleBook } from '../controllers/googlebookSearchController.js'
+import { findBookByKeyword, findBookDetailByID, saveGoogleBook } from '../controllers/googleBookSearchController.js'
 
 const router = express.Router()
 

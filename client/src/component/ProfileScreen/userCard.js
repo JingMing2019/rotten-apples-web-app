@@ -14,7 +14,6 @@ const UserCard = ({
                           'role': 'reader',
                           'bio': 'I love reading!',
                           'location': 'San Jose',
-                          'image_url': './img/top-liked-1.jpg'
                       }
                   }) => {
 

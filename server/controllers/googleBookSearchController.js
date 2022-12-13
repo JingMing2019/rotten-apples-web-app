@@ -70,7 +70,7 @@ export const saveGoogleBook = asyncHandler(async (req, res) => {
     title: googleBook.volumeInfo.title,
     subtitle: googleBook.volumeInfo.subtitle,
     authors: googleBook.volumeInfo.authors,
-    image_url: googleBook.volumeInfo.imageLinks.thumbnail,
+    image_url: googleBook.volumeInfo.imageLinks ? googleBook.volumeInfo.imageLinks.thumbnail : "",
     description: googleBook.volumeInfo.description,
     published_date: googleBook.volumeInfo.publishedDate,
     page: googleBook.pageCount,

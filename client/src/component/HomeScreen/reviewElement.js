@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import sampleCover from "../../vendors/img/book-cover-sample.png"
 
 const ReviewElement = ({ book }) => {
   return (
@@ -8,7 +9,7 @@ const ReviewElement = ({ book }) => {
         <Link to={`/book/${book.book._id}`}>
           <div className="card homepage-card-img">
             <img
-              src={book.book.image_url}
+              src={book.book.image_url ? book.book.image_url : sampleCover}
               alt="book_image_url"
               height="100%"
               width="100%"

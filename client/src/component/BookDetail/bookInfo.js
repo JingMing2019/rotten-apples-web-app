@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import RatingStar from '../Rating/ratingStar'
 import { useDispatch, useSelector } from 'react-redux'
 import { getUserProfile, likeBook, unLikeBook } from '../../actions/userActions'
+import sampleCover from "../../vendors/img/book-cover-sample.png"
 
 const BookInfo = ({ bookInfo }) => {
   const dispatch = useDispatch()
@@ -51,7 +52,7 @@ const BookInfo = ({ bookInfo }) => {
   return (
     <>
       <div className="position-relative">
-        <img src={book.image_url} className="card-img-top banner-height float-end mt-5" alt=""/>
+        <img src={book.image_url ? book.image_url : sampleCover} className="card-img-top banner-height float-end mt-5" alt=""/>
       </div>
       <div className="position-absolute img-title-pos">
         <h1 className="book-title">{book.title}</h1>

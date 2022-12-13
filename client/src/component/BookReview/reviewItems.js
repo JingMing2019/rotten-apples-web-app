@@ -19,9 +19,7 @@ const ReviewItems = ({ review }) => {
 
     return (
         <>
-
             <div className="review-item clearfix">
-
                 <div className="grid-image-left">
                     {
                         review.isAnonymous?
@@ -32,9 +30,7 @@ const ReviewItems = ({ review }) => {
                             </Link>
                     }
                 </div>
-
                 <div className="name-heading">
-
                     {
                         review.isAnonymous?
                             <strong>Anonymous</strong>
@@ -43,8 +39,6 @@ const ReviewItems = ({ review }) => {
                                 <strong className='color-black'>{review.name}</strong>
                             </Link>
                     }
-
-
                     <br/>
                     {userInfo && (userInfo.role === 'admin' || userInfo._id === review.user) && (
                         <Link to="#">
