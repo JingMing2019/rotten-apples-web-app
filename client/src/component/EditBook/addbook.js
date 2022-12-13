@@ -166,7 +166,7 @@ const AddBook = () => {
                             {/*</Form.Group>*/}
 
                             <button type="submit"
-                                    className="btn btn-outline-success hero-btn"
+                                    className="btn bg-primary hero-btn"
                                     onClick={submitHandler}
                             >
                                 <Link to = "/home"></Link>
