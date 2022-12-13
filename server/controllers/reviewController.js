@@ -74,7 +74,7 @@ const createBookReview = asyncHandler(async (req, res) => {
     // calculate book new rating
     const reviews = await ReviewDao.findReviewsByBookId(req.params.bid)
     let { cumRating, count } = calculateRatingAndCount(reviews)
-    book.stats.numReviews = count
+    book.stats.numReviews = reviews.length
     book.rating = cumRating / count
     await book.save()
 
@@ -96,7 +96,7 @@ const deleteBookReview = asyncHandler(async (req, res) => {
         const reviews = await ReviewDao.findReviewsByBookId(req.params.bid)
         let { cumRating, count } = calculateRatingAndCount(reviews)
         // update book attribute value and save
-        book.stats.numReviews = count
+        book.stats.numReviews = reviews.length
         book.rating = cumRating / count
         await book.save()
 
