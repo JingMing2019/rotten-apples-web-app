@@ -22,6 +22,9 @@ const HomeScreen = () => {
               src={appLogo}/>
           </div>
           <Searchbar/>
+          <div className="flex text-white mt-5">
+            The most trusted measurement of quality for books.
+          </div>
         </section>
 
         <section className="homepage-card-section">

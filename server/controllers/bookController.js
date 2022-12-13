@@ -58,7 +58,7 @@ const createBook = asyncHandler(async (req, res) => {
       title: book.title,
       subtitle: book.subtitle,
       authors: book.authors,
-      image_url: book.image_url,
+      image_url: "https://d1csarkz8obe9u.cloudfront.net/posterpreviews/vintage-book-cover-template-design-fe1040a9952994208fcae6066ab78f2b_screen.jpg?ts=1636980773",
       rating: 0,
       liked: [],
       stats: {

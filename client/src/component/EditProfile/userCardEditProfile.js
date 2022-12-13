@@ -16,7 +16,7 @@ const UserCardEditProfile = ({ profile }) => {
                     </h3>
                     <p className="text-black">{profile.bio}</p>
 
-                    <Link className="btn rounded-pill bg-success fw-bold mt-1" to="/profile">Back</Link>
+                    <Link className="btn bg-primary mt-1" to="/profile">Back</Link>
                 </div>
             </div>
         </>

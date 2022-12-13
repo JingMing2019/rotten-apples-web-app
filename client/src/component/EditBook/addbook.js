@@ -111,14 +111,14 @@ const AddBook = () => {
                             {/*        onChange={event => setConfirmPassword(event.target.value)}*/}
                             {/*    />*/}
                             {/*</Form.Group>*/}
-                            <Form.Group className="py-2" controlId="email">
-                                <Form.Control
-                                    type="test"
-                                    placeholder="rating"
-                                    value={rating}
-                                    onChange={event => setRating(event.target.value)}
-                                />
-                            </Form.Group>
+                            {/*<Form.Group className="py-2" controlId="email">*/}
+                            {/*    <Form.Control*/}
+                            {/*        type="test"*/}
+                            {/*        placeholder="rating"*/}
+                            {/*        value={rating}*/}
+                            {/*        onChange={event => setRating(event.target.value)}*/}
+                            {/*    />*/}
+                            {/*</Form.Group>*/}
                             <Form.Group className="py-2" controlId="location">
                                 <Form.Control
                                     type="text"
