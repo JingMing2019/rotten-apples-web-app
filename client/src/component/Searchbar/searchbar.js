@@ -2,15 +2,15 @@ import React, {useCallback, useEffect, useState} from 'react'
 import axios from "axios";
 import {GOOGLE_API} from "../../constants/apiConstants";
 import GoogleSearchBookList from "../google-search/googleSearchBookList";
-import {useNavigate} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 
-const Searchbar = ({keyword}) => {
+const Searchbar = () => {
+  const { keyword } = useParams()
+
   const navigate = useNavigate()
 
   const [keywordInput, setKeywordInput] = useState(keyword)
   const [books, setBooks] = useState(null)
-
-  console.log(keywordInput, keyword)
 
   const searchByKeyword = useCallback(async (keyword) => {
     try {
@@ -28,6 +28,7 @@ const Searchbar = ({keyword}) => {
 
   useEffect(() => {
     if (keyword) {
+      setKeywordInput(keyword)
       searchByKeyword(keyword).then(() => {})
     } else {
       setKeywordInput('')
