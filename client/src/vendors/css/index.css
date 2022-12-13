@@ -173,3 +173,7 @@ body {
     flex-flow: column;
 }
 
+.card-size {
+    min-height: 450px;
+    min-width: 200px;
+}
