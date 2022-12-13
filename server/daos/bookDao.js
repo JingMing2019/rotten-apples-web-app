@@ -17,3 +17,5 @@ export const updateBook = (bid, book) => Book.findByIdAndUpdate(bid, {...book}, 
 
 // Update the book and return updated book
 export const updateBookByGoogleId = (gid, book) => Book.findOneAndUpdate({google_id: gid}, {...book}, {new : true})
+
+export const findTopBooks = (limit) => Book.find({}).sort({ rating: -1, updatedAt: -1 }).limit(limit)

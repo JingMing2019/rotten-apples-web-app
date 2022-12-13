@@ -159,11 +159,11 @@ export const resetSaveGoogleBook = () => async (dispatch) => {
   dispatch({ type: GOOGLE_BOOK_SAVE_RESET })
 }
 
-export const listTopLikedBooks = () => async (dispatch) => {
+export const listTopRatedBooks = (limit) => async (dispatch) => {
   try {
     dispatch({ type: BOOK_TOP_RATED_REQUEST })
 
-    const { data } = await axios.get(`${BOOKS_API}/top`)
+    const { data } = await axios.get(`${BOOKS_API}/top/${limit}`)
 
     dispatch({
       type: BOOK_TOP_RATED_SUCCESS,

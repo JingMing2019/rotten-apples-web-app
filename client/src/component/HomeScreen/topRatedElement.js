@@ -2,7 +2,7 @@ import React from "react"
 import { Link } from "react-router-dom"
 import sampleCover from "../../vendors/img/book-cover-sample.png"
 
-const TopLikedElement = ({ book }) => {
+const TopRatedElement = ({ book }) => {
   return (
     <>
       <div className="m-3 col-12 col-md-3">
@@ -22,4 +22,4 @@ const TopLikedElement = ({ book }) => {
     </>
   )
 }
-export default TopLikedElement
+export default TopRatedElement

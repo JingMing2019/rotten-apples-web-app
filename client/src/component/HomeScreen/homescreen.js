@@ -1,5 +1,5 @@
 import Searchbar from '../Searchbar/searchbar'
-import TopLikedBook from './topLikedBook'
+import TopRatedBook from './topRatedBook'
 import RecentReviewedBook from './recentReviewedBook'
 import React from 'react'
 import { useSelector } from 'react-redux'
@@ -28,7 +28,7 @@ const HomeScreen = () => {
         </section>
 
         <section className="homepage-card-section">
-          <TopLikedBook/>
+          <TopRatedBook/>
           {/*{RecentReviewedBook()}*/}
           {userInfo && <RecentReviewedBook/>}
         </section>

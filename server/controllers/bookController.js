@@ -1,5 +1,4 @@
 import asyncHandler from 'express-async-handler' // asyncHandler is a middleware that is used to wrap async functions
-import Book from '../models/bookModel.js'
 import { Review } from '../models/reviewModel.js'
 import * as BookDao from "../daos/bookDao.js";
 import {authAdmin, authWriter} from "../middlewares/authMiddleware.js";
@@ -98,11 +97,11 @@ const updateBook = asyncHandler(async (req, res) => {
 
 
 // @desc    Get top rated books
-// @route   GET /api/books/top
+// @route   GET /api/books/top/:limit
 // @access  Public
 // TODO: next
 const getTopBooks = asyncHandler(async (req, res) => {
-  const books = await Book.find({}).sort({ rating: -1 }).limit(4)
+  const books = await BookDao.findTopBooks(req.params.limit)
 
   res.json(books)
 })
