@@ -72,7 +72,7 @@ export const listBookDetails = (id) => async (dispatch) => {
   }
 }
 
-export const listUserRecentReviewedBooks = (limit) => async (
+export const listUserRecentReviewedBooks = (limit, uid) => async (
     dispatch,
     getState
 ) => {
@@ -90,7 +90,7 @@ export const listUserRecentReviewedBooks = (limit) => async (
       },
     }
 
-    const { data } = await axios.get(`${BOOKS_API}/recent-reviewed/${limit}/${userInfo._id}`, config)
+    const { data } = await axios.get(`${BOOKS_API}/recent-reviewed/${limit}/${uid}`, config)
 
     dispatch({
       type: BOOK_USER_RECENT_REVIEWED_SUCCESS,

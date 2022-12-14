@@ -22,10 +22,10 @@ const ReviewItems = ({ review }) => {
             <div className="review-item clearfix">
                 <div className="grid-image-left">
                     {
-                        review.isAnonymous?
+                        review.isAnonymous ?
                             <LetterAvatars name="f" isAnonymous={review.isAnonymous}/>
                             :
-                            <Link to={`/profile/${review.user}`} className="non-line">
+                            <Link to={ userInfo._id === review.user ? "/profile" : `/profile/${review.user}` } className="non-line">
                                 <LetterAvatars name={review.name}/>
                             </Link>
                     }
@@ -35,7 +35,7 @@ const ReviewItems = ({ review }) => {
                         review.isAnonymous?
                             <strong>Anonymous</strong>
                             :
-                            <Link to={`/profile/${review.user}`} className="non-line">
+                            <Link to={ userInfo._id === review.user ? "/profile" : `/profile/${review.user}` } className="non-line">
                                 <strong className='color-black'>{review.name}</strong>
                             </Link>
                     }

@@ -29,7 +29,7 @@ const UserProfile = () => {
     return (
         <>
             <div>
-                <section className="header height-auto">
+                <section className="header">
                     <div className="row">
                         <div className="col-4 pe-0">
                             <UserCard profile={user}/>
