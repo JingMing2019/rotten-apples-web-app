@@ -1,7 +1,7 @@
 import asyncHandler from 'express-async-handler' // asyncHandler is a middleware that is used to wrap async functions
 import * as BookDao from "../daos/bookDao.js";
 import * as ReviewDao from "../daos/reviewDao.js";
-import {authAdmin, authWriter} from "../middlewares/authMiddleware.js";
+import {USER_ROLE_ADMIN, USER_ROLE_WRITER} from "../constants/userConstant.js";
 
 // @desc    Fetch all books
 // @route   GET /api/books
@@ -31,10 +31,10 @@ const getBookById = asyncHandler(async (req, res) => {
 // writer can only delete his own book
 // admin can delete any books
 const deleteBook = asyncHandler(async (req, res) => {
-  if (authAdmin) {
+  if (req.user.role === USER_ROLE_ADMIN) {
     await BookDao.deleteBook(req.params.id)
     return res.sendStatus(200)
-  } else if (authWriter && req.user.ownedBooks.includes(req.params.id)) {
+  } else if (req.user.role === USER_ROLE_WRITER && req.user.ownedBooks.includes(req.params.id)) {
     await BookDao.deleteBook(req.params.id)
     return res.sendStatus(200)
   } else {

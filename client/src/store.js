@@ -9,7 +9,7 @@ import {
   bookRecentReviewedReducer,
   saveGoogleBookReducer,
   bookTopRatedReducer, bookCreateReviewReducer,
-  bookCreateReducer, bookUserRecentReviewedReducer
+  bookCreateReducer, bookUserRecentReviewedReducer, deleteBookReducer
 } from './reducers/bookReducer'
 import {
   otherUserProfileReducer,
@@ -37,7 +37,8 @@ const reducer = combineReducers({
   updateUserProfile: userUpdateProfileReducer,
   likeBook: userLikeBookReducer,
   bookCreateReview: bookCreateReviewReducer,
-  deleteReview: deleteReviewReducer
+  deleteReview: deleteReviewReducer,
+  deleteBook: deleteBookReducer,
 })
 
 // get user data from local storage

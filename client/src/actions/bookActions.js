@@ -10,6 +10,7 @@ import {
   BOOK_LIST_REQUEST,
   BOOK_LIST_SUCCESS,
   BOOK_LIST_FAIL,
+  BOOK_LIST_DELETE_ONE,
   GOOGLE_BOOK_SAVE_REQUEST,
   GOOGLE_BOOK_SAVE_SUCCESS,
   GOOGLE_BOOK_SAVE_FAIL,
@@ -22,22 +23,22 @@ import {
   BOOK_CREATE_FAIL,
   BOOK_CREATE_RESET,
   BOOK_USER_RECENT_REVIEWED_REQUEST,
-  BOOK_USER_RECENT_REVIEWED_SUCCESS, BOOK_USER_RECENT_REVIEWED_FAIL
+  BOOK_USER_RECENT_REVIEWED_SUCCESS,
+  BOOK_USER_RECENT_REVIEWED_FAIL,
+  BOOK_DELETE_REQUEST, BOOK_DELETE_FAIL,
 } from '../constants/bookConstants'
 import {BOOKS_API, GOOGLE_API} from "../constants/apiConstants";
 import {logout} from "./userActions";
 
-export const listBooks = (keyword = '', pageNumber = '') => async (
+export const listBooks = () => async (
   dispatch
 ) => {
   try {
     dispatch({ type: BOOK_LIST_REQUEST })
 
-    const { data } = await axios.get(
-      `${BOOKS_API}?keyword=${keyword}&pageNumber=${pageNumber}`
-    )
+    const { data } = await axios.get(`${BOOKS_API}`)
 
-    dispatch({ type: BOOK_LIST_SUCCESS, payload: data })
+    dispatch({ type: BOOK_LIST_SUCCESS, payload: data.data })
   } catch (error) {
     dispatch({
       type: BOOK_LIST_FAIL,
@@ -223,6 +224,44 @@ export const listTopRatedBooks = (limit) => async (dispatch) => {
         error.response && error.response.data.message
           ? error.response.data.message
           : error.message,
+    })
+  }
+}
+
+export const deleteBook = (bookId) => async (dispatch, getState) => {
+  try {
+    dispatch({ type: BOOK_DELETE_REQUEST })
+
+    const {
+      userLogin: { userInfo },
+    } = getState()
+
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    }
+
+    // console.log(config)
+    await axios.delete(`${BOOKS_API}/${bookId}`, config)
+
+    dispatch({
+      type: BOOK_LIST_DELETE_ONE,
+      payload: bookId
+    })
+
+  } catch (error) {
+    const message =
+        error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message
+    if (message === 'Not authorized, token failed') {
+      dispatch(logout())
+    }
+    dispatch({
+      type: BOOK_DELETE_FAIL,
+      payload: message,
     })
   }
 }
