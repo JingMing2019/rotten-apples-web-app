@@ -1,6 +1,7 @@
 import asyncHandler from 'express-async-handler' // asyncHandler is a middleware that is used to wrap async functions
 import * as BookDao from "../daos/bookDao.js";
 import * as ReviewDao from "../daos/reviewDao.js";
+import * as UserDao from "../daos/userDao.js";
 import {USER_ROLE_ADMIN, USER_ROLE_WRITER} from "../constants/userConstant.js";
 
 // @desc    Fetch all books
@@ -31,14 +32,25 @@ const getBookById = asyncHandler(async (req, res) => {
 // writer can only delete his own book
 // admin can delete any books
 const deleteBook = asyncHandler(async (req, res) => {
-  if (req.user.role === USER_ROLE_ADMIN) {
+  const book = await BookDao.findBookById(req.params.id)
+  const users = await UserDao.findUsersByIdArray(book.liked)
+
+
+  if (req.user.role === USER_ROLE_ADMIN ||
+      (req.user.role === USER_ROLE_WRITER && req.user.ownedBooks.includes(req.params.id))
+  ) {
     await BookDao.deleteBook(req.params.id)
-    return res.sendStatus(200)
-  } else if (req.user.role === USER_ROLE_WRITER && req.user.ownedBooks.includes(req.params.id)) {
-    await BookDao.deleteBook(req.params.id)
+
+    for(let i = 0; i < users.length; i++) {
+      users[i].likedBooks = users[i].likedBooks.filter(
+          (data) => !data.book.equals(req.params.id))
+      await users[i].save()
+    }
+
     return res.sendStatus(200)
   } else {
     res.status(401)
+
     throw new Error('Not authorized')
   }
 
@@ -99,7 +111,6 @@ const updateBook = asyncHandler(async (req, res) => {
 // @desc    Get top rated books
 // @route   GET /api/books/top/:limit
 // @access  Public
-// TODO: next
 const getTopBooks = asyncHandler(async (req, res) => {
   const books = await BookDao.findTopBooks(req.params.limit)
 
