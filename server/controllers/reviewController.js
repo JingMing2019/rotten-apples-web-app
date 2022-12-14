@@ -110,7 +110,7 @@ const deleteBookReview = asyncHandler(async (req, res) => {
         let { cumRating, count } = calculateRatingAndCount(reviews)
         // update book attribute value and save
         book.stats.numReviews = reviews.length
-        book.rating = cumRating / count
+        book.rating = count ? cumRating / count : 0
         await book.save()
 
         res.status(200).json({message: 'Review deleted'})

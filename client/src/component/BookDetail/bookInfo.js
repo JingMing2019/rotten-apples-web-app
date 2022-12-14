@@ -46,7 +46,6 @@ const BookInfo = ({ bookInfo }) => {
       setBook(newBook)
       dispatch(unLikeBook(newBook))
     }
-
   }
 
   return (
