@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { Row, Col } from "react-bootstrap"
 import { listUserRecentReviewedBooks } from "../../actions/bookActions"
 
-const UserRecentReviewedBook = () => {
+const UserRecentReviewedBook = ( {uid} ) => {
   const dispatch = useDispatch()
   const bookUserRecentReviewed = useSelector((state) => state.bookUserRecentReviewed)
   const { books } = bookUserRecentReviewed
@@ -14,7 +14,7 @@ const UserRecentReviewedBook = () => {
 
   useEffect(() => {
     if (userInfo) {
-      dispatch(listUserRecentReviewedBooks(4))
+      dispatch(listUserRecentReviewedBooks(4, uid ? uid : userInfo._id))
     } else {
       // no render the recent reviewed book
     }
@@ -22,7 +22,9 @@ const UserRecentReviewedBook = () => {
   return (
     <>
         <div className="mt-5 m-3 flex">
-            <h1 className="text-black">Your Recent Reviewed Books</h1>
+            <h1 className="text-black">
+                {uid ? "Recent Reviewed Books" : "Your Recent Reviewed Books"}
+            </h1>
         </div>
         <div className="container">
           <Row className="justify-content-start">

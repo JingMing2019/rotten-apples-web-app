@@ -4,6 +4,7 @@ import { getOtherUserProfile } from '../../actions/userActions'
 import { useParams } from 'react-router-dom'
 import OtherUserCard from './otherUserCard'
 import OtherUserDetail from './otherUserDetail'
+import UserRecentReviewedBook from "./userRecentReviewedBook";
 
 const OtherUserProfile = () => {
     const userId = useParams().id
@@ -28,6 +29,7 @@ const OtherUserProfile = () => {
                         </div>
                         <div className="col-8 only-bg-blur">
                             <OtherUserDetail user={user}/>
+                            <UserRecentReviewedBook uid={userId} />
                         </div>
                     </div>
                 </section>

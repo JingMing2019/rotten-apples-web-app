@@ -30,11 +30,11 @@ const UserProfile = () => {
         <>
             <div>
                 <section className="header height-auto">
-                    <div className="row">
+                    <div className="row height-50vh">
                         <div className="col-4 pe-0">
                             <UserCard profile={user}/>
                         </div>
-                        <div className="col-8 bg-blur">
+                        <div className="col-8 only-bg-blur">
                             <UserDetail user={user}/>
                             <UserRecentReviewedBook />
                             {user.likedBooks && <UserLikedBook books={user.likedBooks}/>}
