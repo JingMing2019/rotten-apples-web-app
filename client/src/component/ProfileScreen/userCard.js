@@ -20,10 +20,10 @@ const UserCard = ({
     return (
         <>
             <div className="user-card user-card-flex">
-                <div className="m-1">
-                    <div className="avatar-position-profile">
-                        <LetterAvatars name={profile.name}/>
-                    </div>
+                <div className="avatar-position-profile">
+                    <LetterAvatars name={profile.name}/>
+                </div>
+                <div className="position-relative top-80px">
                     <h3 className="user-card-name text-black">{profile.name}
                     </h3>
                     <span className="badge rounded-pill bg-primary text-black disabled">{profile.role}</span>
