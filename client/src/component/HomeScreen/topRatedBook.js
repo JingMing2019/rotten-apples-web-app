@@ -1,16 +1,16 @@
 import React, { useEffect } from "react"
-import TopLikedElement from "./topLikedElement"
+import TopRatedElement from "./topRatedElement"
 import { Row, Col } from "react-bootstrap"
 import { useDispatch, useSelector } from "react-redux"
-import { listTopLikedBooks } from "../../actions/bookActions"
+import { listTopRatedBooks } from "../../actions/bookActions"
 
-const TopLikedBook = () => {
+const TopRatedBook = () => {
   const dispatch = useDispatch()
-  const bookTopLiked = useSelector((state) => state.bookTopLiked)
-  const { books } = bookTopLiked
+  const bookTopRated = useSelector((state) => state.bookTopRated)
+  const { books } = bookTopRated
 
   useEffect(() => {
-    dispatch(listTopLikedBooks())
+    dispatch(listTopRatedBooks(4))
   }, [dispatch])
 
   return (
@@ -22,11 +22,11 @@ const TopLikedBook = () => {
         {books &&
           books.map((book) => (
             <Col key={book._id} sm={12} md={6} lg={4} xl={2} >
-              <TopLikedElement book={book} />
+              <TopRatedElement book={book} />
             </Col>
           ))}
       </Row>
     </>
   )
 }
-export default TopLikedBook
+export default TopRatedBook

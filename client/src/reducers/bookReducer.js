@@ -118,7 +118,7 @@ export const bookRecentReviewedReducer = (
   }
 }
 
-export const bookTopLikedReducer = (
+export const bookTopRatedReducer = (
   state = { books: [] },
   action
 ) => {

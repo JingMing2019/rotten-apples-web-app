@@ -8,7 +8,7 @@ import {
   bookListReducer,
   bookRecentReviewedReducer,
   saveGoogleBookReducer,
-  bookTopLikedReducer, bookCreateReviewReducer,
+  bookTopRatedReducer, bookCreateReviewReducer,
   bookCreateReducer
 } from './reducers/bookReducer'
 import {
@@ -26,7 +26,7 @@ const reducer = combineReducers({
   bookDetails: bookDetailsReducer,
   bookReviews: bookReviewsReducer,
   bookRecentReviewed: bookRecentReviewedReducer,
-  bookTopLiked: bookTopLikedReducer,
+  bookTopRated: bookTopRatedReducer,
   saveGoogleBook: saveGoogleBookReducer,
   createBook: bookCreateReducer,
   userLogin: userLoginReducer,
