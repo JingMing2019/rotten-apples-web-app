@@ -22,12 +22,12 @@ const OtherUserProfile = () => {
     return (
         <>
             <div>
-                <section className="header height-auto">
-                    <div className="row height-50vh">
+                <section className="header">
+                    <div className="row">
                         <div className="col-4 pe-0">
                             <OtherUserCard profile={user}/>
                         </div>
-                        <div className="col-8 only-bg-blur">
+                        <div className="col-8 bg-blur">
                             <OtherUserDetail user={user}/>
                             <UserRecentReviewedBook uid={userId} />
                         </div>
