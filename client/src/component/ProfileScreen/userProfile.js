@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { getUserProfile } from '../../actions/userActions'
 import UserRecentReviewedBook from "./userRecentReviewedBook";
+import UserOwnedBook from "./userOwnedBook";
 
 const UserProfile = () => {
 
@@ -18,13 +19,16 @@ const UserProfile = () => {
     const userProfile = useSelector(state => state.userProfile)
     const { user } = userProfile
 
+    const deleteBook = useSelector(state => state.deleteBook)
+    const { success: deleteBookSuccess } = deleteBook
+
     useEffect(() => {
         if (!userInfo) {
             navigate('/login')
         } else {
             dispatch(getUserProfile())
         }
-    }, [dispatch, userInfo, navigate])
+    }, [dispatch, userInfo, navigate, deleteBookSuccess])
 
     return (
         <>
@@ -36,6 +40,7 @@ const UserProfile = () => {
                         </div>
                         <div className="col-8 bg-blur">
                             <UserDetail user={user}/>
+                            {userInfo && userInfo.role === 'writer' && user.ownedBooks && <UserOwnedBook books={user.ownedBooks}/>}
                             <UserRecentReviewedBook />
                             {user.likedBooks && <UserLikedBook books={user.likedBooks}/>}
                         </div>

@@ -25,7 +25,7 @@ import {
   BOOK_USER_RECENT_REVIEWED_REQUEST,
   BOOK_USER_RECENT_REVIEWED_SUCCESS,
   BOOK_USER_RECENT_REVIEWED_FAIL,
-  BOOK_DELETE_REQUEST, BOOK_DELETE_FAIL,
+  BOOK_DELETE_REQUEST, BOOK_DELETE_FAIL, BOOK_DELETE_SUCCESS,
 } from '../constants/bookConstants'
 import {BOOKS_API, GOOGLE_API} from "../constants/apiConstants";
 import {logout} from "./userActions";
@@ -250,6 +250,8 @@ export const deleteBook = (bookId) => async (dispatch, getState) => {
       type: BOOK_LIST_DELETE_ONE,
       payload: bookId
     })
+
+    dispatch({type: BOOK_DELETE_SUCCESS})
 
   } catch (error) {
     const message =

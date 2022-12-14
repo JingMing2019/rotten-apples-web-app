@@ -34,7 +34,7 @@ const NavbarComp = () => {
               <Nav.Link as={Link} to="/home" className={`${active === 'home' ? 'active' : ""}`}>Home</Nav.Link>
               <Nav.Link as={Link} to="/search" className={`${active === 'search' ? 'active' : ""}`}>Search</Nav.Link>
               {userInfo && userInfo.role === 'admin' &&
-                  <Nav.Link as={Link} to="/admin" className={`${active === 'search' ? 'active' : ""}`}>Admin</Nav.Link>
+                  <Nav.Link as={Link} to="/admin" className={`${active === 'admin' ? 'active' : ""}`}>Admin</Nav.Link>
               }
             </Nav>
             <Nav className="ms-auto">

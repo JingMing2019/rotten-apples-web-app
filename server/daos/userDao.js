@@ -18,3 +18,33 @@ export const findUsersByIdArray = (uidArray) => User.find({
         $in: [uidArray]
     }
 })
+
+export const findUsersByLikedBooksId = (bid) => User.find({
+    'likedBooks': {
+        $elemMatch: {
+            'book': bid
+        }
+    }
+})
+
+
+export const findUsersByOwnedBooksId = (bid) => User.find({
+    'ownedBooks': {
+        $elemMatch: {
+            'book': bid
+        }
+    }
+})
+
+export const findUsersByLikedAndOwnedBooksId = (bid) => User.find({
+    'likedBooks': {
+        $elemMatch: {
+            'book': bid
+        }
+    },
+    'ownedBooks': {
+        $elemMatch: {
+            'book': bid
+        }
+    }
+})

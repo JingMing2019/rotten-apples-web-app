@@ -32,20 +32,25 @@ const getBookById = asyncHandler(async (req, res) => {
 // writer can only delete his own book
 // admin can delete any books
 const deleteBook = asyncHandler(async (req, res) => {
-  const book = await BookDao.findBookById(req.params.id)
-  const users = await UserDao.findUsersByIdArray(book.liked)
-
+  // check if book is inside the books collection or not
+  await BookDao.findBookById(req.params.id)
+  const users = await UserDao.findUsersByLikedAndOwnedBooksId(req.params.id)
 
   if (req.user.role === USER_ROLE_ADMIN ||
-      (req.user.role === USER_ROLE_WRITER && req.user.ownedBooks.includes(req.params.id))
+      (req.user.role === USER_ROLE_WRITER && req.user.ownedBooks.find(element => element.book.equals(req.params.id)))
   ) {
+    // delete book from books collection
     await BookDao.deleteBook(req.params.id)
-
+    // update users likedBooks and ownedBooks attribute
     for(let i = 0; i < users.length; i++) {
       users[i].likedBooks = users[i].likedBooks.filter(
           (data) => !data.book.equals(req.params.id))
+      users[i].ownedBooks = users[i].ownedBooks.filter(
+          (data) => !data.book.equals(req.params.id))
       await users[i].save()
     }
+    // delete related reviews from reviews collection
+    await ReviewDao.deleteReviewsByBookId(req.params.id)
 
     return res.sendStatus(200)
   } else {
@@ -53,7 +58,6 @@ const deleteBook = asyncHandler(async (req, res) => {
 
     throw new Error('Not authorized')
   }
-
 })
 
 // @desc    Create a book
@@ -81,6 +85,16 @@ const createBook = asyncHandler(async (req, res) => {
       page: book.page,
     }
     const createdBook = await BookDao.createBook(newBook)
+
+    const user = await UserDao.findUserById(req.user._id)
+    if (user && createdBook) {
+      user.ownedBooks.unshift({
+        title: createdBook.title,
+        image_url: createdBook.image_url,
+        book: createdBook._id
+      })
+      await user.save()
+    }
 
     return res.status(201).json(createdBook)
   } else {
