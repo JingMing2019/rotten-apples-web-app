@@ -18,10 +18,10 @@ const TopRatedBook = () => {
       <div className="mt-5 m-3 flex">
         <h1 className="text-black">Most Popular</h1>
       </div>
-      <Row className="justify-content-md-center">
+      <Row className="justify-content-center">
         {books &&
           books.map((book) => (
-            <Col key={book._id} sm={12} md={6} lg={4} xl={2} >
+            <Col key={book._id} sm={12} md={6} lg={3}>
               <TopRatedElement book={book} />
             </Col>
           ))}

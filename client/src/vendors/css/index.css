@@ -50,6 +50,12 @@ body {
     overflow: hidden;
     object-fit: cover;
 }
+.homepage-card-img img{
+    width: 175px;
+    height: 256px !important;
+    overflow: hidden;
+    object-fit: cover;
+}
 .homepage-card-img:hover {
     transform: scale(1.2);
     box-shadow: 0 25px 40px #68CD4F;
@@ -78,17 +84,6 @@ body {
     padding: 18px;
     color: white;
     z-index: 2;
-}
-
-.homepage-list-child {
-    width: 700px;
-}
-.homepage-list-child img {
-    float: left;
-    width: 150px;
-    height: 150px;
-    overflow: hidden;
-    object-fit: contain;
 }
 .homepage-list-child .text {
     float: left;
@@ -135,10 +130,9 @@ body {
     background: linear-gradient(200deg, #68CD4F, #82E0AA);
 }
 .search-book-description {
-    display: -webkit-box;
-    -webkit-line-clamp: 4;
-    -webkit-box-orient: vertical;
+    white-space: nowrap;
     overflow: hidden;
+    text-overflow: ellipsis;
 }
 .search-bar{
     width: 500px;

@@ -22,7 +22,7 @@ const GoogleSearchBookList = ({books}) => {
   return (
     <div className="container">
       <ul className="list-group">
-        {books && <h5 className="text-white my-3">Results from Google Books...</h5>}
+        {books && <h6 className="text-white my-3 pt-3">Results from Google Books...</h6>}
         {
             books.map(
               book => (<GoogleSearchListItem book={book} key={book.id}/>)
