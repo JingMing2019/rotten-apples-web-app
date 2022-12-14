@@ -61,7 +61,7 @@ body {
 }
 .homepage-card-img:hover {
     transform: scale(1.2);
-    box-shadow: 0 25px 40px #68CD4F;
+    /*box-shadow: 0 25px 40px #68CD4F;*/
     transition: 0.35s;
     z-index: 1;
 }
@@ -171,6 +171,6 @@ body {
 }
 
 .card-size {
-    min-height: 450px;
+    min-height: 400px;
     min-width: 200px;
 }

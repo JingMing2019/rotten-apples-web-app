@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import UserCard from './userCard'
 import UserDetail from './userDetail'
-import FavouriteBook from '../HomeScreen/favouriteBook'
+import UserLikedBook from './userLikedBook'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { getUserProfile } from '../../actions/userActions'
@@ -37,12 +37,9 @@ const UserProfile = () => {
                         <div className="col-8 bg-blur">
                             <UserDetail user={user}/>
                             <UserRecentReviewedBook />
-                            {user.likedBooks && <FavouriteBook books={user.likedBooks}/>}
+                            {user.likedBooks && <UserLikedBook books={user.likedBooks}/>}
                         </div>
                     </div>
-                </section>
-
-                <section className="homepage-card-section">
                 </section>
             </div>
         </>

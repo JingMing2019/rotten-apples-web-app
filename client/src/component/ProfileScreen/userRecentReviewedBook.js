@@ -29,7 +29,7 @@ const UserRecentReviewedBook = () => {
           <Row className="justify-content-between">
             {books &&
               books.map((book) => (
-                <Col key={book._id} sm={12} md={6} lg={3}>
+                <Col key={book._id} sm={12} md={6} xl={3}>
                   <ReviewElement book={book} />
                 </Col>
               ))}

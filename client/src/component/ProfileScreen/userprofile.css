@@ -56,3 +56,9 @@
     width: 100%;
     height: 100%;
 }
+.profile-page-card-img {
+    width: 160px;
+    height: 218px !important;
+    overflow: hidden;
+    object-fit: cover;
+}

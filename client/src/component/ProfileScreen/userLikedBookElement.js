@@ -3,14 +3,14 @@ import { Link } from 'react-router-dom'
 import { Button, Card } from 'react-bootstrap'
 import sampleCover from "../../vendors/img/book-cover-sample.png"
 
-const FavouriteBookElement = ({ book }) => {
+const UserLikedBookElement = ({ book }) => {
   return (
     <Card className="my-2 p-2 border-0 text-center same-width">
       <Link to={`/book/${book.book}`}>
-        <Card.Img variant="top" src={book.image_url ? book.image_url : sampleCover} alt=""/>
+        <Card.Img className="profile-page-card-img" variant="top" src={book.image_url ? book.image_url : sampleCover} alt=""/>
       </Link>
       <Card.Body>
-        <Card.Title as="h3">{book.title}</Card.Title>
+        <Card.Title className="fs-5 text-truncate">{book.title}</Card.Title>
         <Card.Text>
           <i className="fa-solid fa-heart"/>
           &nbsp;liked&nbsp;
@@ -23,4 +23,4 @@ const FavouriteBookElement = ({ book }) => {
     </Card>
   )
 }
-export default FavouriteBookElement
+export default UserLikedBookElement
