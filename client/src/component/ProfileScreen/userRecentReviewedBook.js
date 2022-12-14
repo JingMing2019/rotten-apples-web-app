@@ -1,25 +1,28 @@
 import React, { useEffect } from "react"
-import ReviewElement from "../HomeScreen/reviewElement"
+import RecentReviewedBookElement from "../HomeScreen/recentReviewedBookElement"
 import { useDispatch, useSelector } from "react-redux"
 import { Row, Col } from "react-bootstrap"
 import { listUserRecentReviewedBooks } from "../../actions/bookActions"
 
 const UserRecentReviewedBook = ( {uid} ) => {
-  const dispatch = useDispatch()
-  const bookUserRecentReviewed = useSelector((state) => state.bookUserRecentReviewed)
-  const { books } = bookUserRecentReviewed
+    const dispatch = useDispatch()
+    const bookUserRecentReviewed = useSelector((state) => state.bookUserRecentReviewed)
+    const { books } = bookUserRecentReviewed
 
-  const userLogin = useSelector((state) => state.userLogin)
-  const { userInfo } = userLogin
+    const userLogin = useSelector((state) => state.userLogin)
+    const { userInfo } = userLogin
 
-  useEffect(() => {
+    const deleteBook = useSelector(state => state.deleteBook)
+    const { success: deleteBookSuccess } = deleteBook
+
+    useEffect(() => {
     if (userInfo) {
       dispatch(listUserRecentReviewedBooks(4, uid ? uid : userInfo._id))
     } else {
       // no render the recent reviewed book
     }
-  }, [dispatch, userInfo])
-  return (
+    }, [dispatch, userInfo, deleteBookSuccess])
+    return (
     <>
         <div className="mt-5 m-3 flex">
             <h1 className="text-black">
@@ -31,12 +34,14 @@ const UserRecentReviewedBook = ( {uid} ) => {
             {books &&
               books.map((book) => (
                 <Col key={book._id} sm={12} md={6} xl={3}>
-                  <ReviewElement book={book} />
+                  <RecentReviewedBookElement book={book} />
                 </Col>
               ))}
           </Row>
         </div>
     </>
-  )
+    )
 }
+
+
 export default UserRecentReviewedBook

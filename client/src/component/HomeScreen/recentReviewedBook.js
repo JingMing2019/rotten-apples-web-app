@@ -1,6 +1,5 @@
 import React, { useEffect } from "react"
-//import books from '../datafornow/books.json'
-import ReviewElement from "./reviewElement"
+import RecentReviewedBookElement from "./recentReviewedBookElement"
 import { useDispatch, useSelector } from "react-redux"
 import { Row, Col } from "react-bootstrap"
 import { listRecentReviewedBooks } from "../../actions/bookActions"
@@ -22,6 +21,7 @@ const RecentReviewedBook = () => {
       // no render the recent reviewed book
     }
   }, [dispatch, userInfo])
+
   return (
     <>
         <div className="mt-5 m-3 flex">
@@ -32,7 +32,7 @@ const RecentReviewedBook = () => {
             {books &&
               books.map((book) => (
                 <Col key={book._id} sm={12} md={6} lg={3}>
-                  <ReviewElement book={book} />
+                  <RecentReviewedBookElement book={book} />
                 </Col>
               ))}
           </Row>

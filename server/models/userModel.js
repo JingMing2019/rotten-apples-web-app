@@ -2,7 +2,6 @@ import mongoose from 'mongoose'
 import bcrypt from 'bcryptjs'
 import { USER_ROLE_ADMIN, USER_ROLE_READER, USER_ROLE_WRITER } from '../constants/userConstant.js'
 import arrayUniquePlugin from 'mongoose-unique-array'
-import { bookSchema } from './bookModel.js'
 
 const userSchema = mongoose.Schema(
   {
@@ -55,24 +54,18 @@ const userSchema = mongoose.Schema(
         },
       }
     ],
-    // ownedBooks: [
-    //   {
-    //       title: { type: String, required: true },
-    //       image_url: { type: String, required: true },
-    //       book: {
-    //           type: mongoose.Schema.Types.ObjectId,
-    //           required: true,
-    //           unique: true,
-    //           ref: 'Book',
-    //       },
-    //   }
-    // ],
-
-    ownedBooks: [bookSchema]
-    // ownedBooks: {
-    //   type: mongoose.Schema.Types.ObjectId,
-    //   ref: 'Book',
-    // },
+    ownedBooks: [
+      {
+          title: { type: String, required: true },
+          image_url: { type: String, required: true },
+          book: {
+              type: mongoose.Schema.Types.ObjectId,
+              required: true,
+              unique: true,
+              ref: 'Book',
+          },
+      }
+    ],
   },
   {
     timestamps: true,
