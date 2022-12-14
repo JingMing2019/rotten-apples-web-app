@@ -9,7 +9,7 @@ const UserLikedBook = ({ books }) => {
             <h1 className="text-black">Your Liked Books</h1>
         </div>
         <div className="container">
-          <Row className="justify-content-between">
+          <Row className="justify-content-start">
             {books &&
               books.map((book) => (
                 <Col key={book._id} sm={12} md={6} xl={3}
