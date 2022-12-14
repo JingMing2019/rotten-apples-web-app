@@ -12,6 +12,8 @@ export const authToken = asyncHandler(async (req, res, next) => {
       token = req.headers.authorization.split(' ')[1]
       // decoded: { id: 'xxx', iat: 123, exp: 123}
       const decoded = jwt.verify(token, `${process.env.TOKEN_SECRET}`)
+
+
       // get the user data but exclude the password and add to attribute req.user
       req.user = await User.findById(decoded.id).select('-password')
 

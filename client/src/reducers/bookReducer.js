@@ -30,7 +30,11 @@ import {
   BOOK_REVIEWS_FAIL,
   BOOK_REVIEWS_RESET,
   BOOK_USER_RECENT_REVIEWED_REQUEST,
-  BOOK_USER_RECENT_REVIEWED_SUCCESS, BOOK_USER_RECENT_REVIEWED_FAIL, BOOK_USER_RECENT_REVIEWED_RESET,
+  BOOK_USER_RECENT_REVIEWED_SUCCESS,
+  BOOK_USER_RECENT_REVIEWED_FAIL,
+  BOOK_USER_RECENT_REVIEWED_RESET,
+  BOOK_DELETE_REQUEST,
+  BOOK_DELETE_SUCCESS, BOOK_DELETE_FAIL, BOOK_LIST_DELETE_ONE,
 } from "../constants/bookConstants"
 
 export const bookListReducer = (state = { books: [] }, action) => {
@@ -41,6 +45,8 @@ export const bookListReducer = (state = { books: [] }, action) => {
       return { loading: false, books: action.payload }
     case BOOK_LIST_FAIL:
       return { loading: false, error: action.payload }
+    case BOOK_LIST_DELETE_ONE:
+      return { loading: false, books: state.books.filter(book => book._id !== action.payload)}
     default:
       return state
   }
@@ -167,6 +173,19 @@ export const bookCreateReviewReducer = (state = {}, action) => {
       return { loading: false, error: action.payload }
     case BOOK_CREATE_REVIEW_RESET:
       return {}
+    default:
+      return state
+  }
+}
+
+export const deleteBookReducer = (state = {}, action) => {
+  switch (action.type) {
+    case BOOK_DELETE_REQUEST:
+      return { loading: true }
+    case BOOK_DELETE_SUCCESS:
+      return { loading: false, success: true }
+    case BOOK_DELETE_FAIL:
+      return { loading: false, error: action.payload }
     default:
       return state
   }

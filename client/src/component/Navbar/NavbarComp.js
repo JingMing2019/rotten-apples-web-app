@@ -1,6 +1,6 @@
 import React from 'react'
 import { Navbar, NavDropdown, Nav, Container } from 'react-bootstrap'
-import { Link, useNavigate } from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import { LinkContainer } from 'react-router-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { logout } from '../../actions/userActions'
@@ -33,6 +33,9 @@ const NavbarComp = () => {
             <Nav className="mr-auto my-2 my-lg-0" style={{ maxHeight: '100px' }} navbarScroll>
               <Nav.Link as={Link} to="/home" className={`${active === 'home' ? 'active' : ""}`}>Home</Nav.Link>
               <Nav.Link as={Link} to="/search" className={`${active === 'search' ? 'active' : ""}`}>Search</Nav.Link>
+              {userInfo && userInfo.role === 'admin' &&
+                  <Nav.Link as={Link} to="/admin" className={`${active === 'search' ? 'active' : ""}`}>Admin</Nav.Link>
+              }
             </Nav>
             <Nav className="ms-auto">
               {userInfo ? (

@@ -16,6 +16,7 @@ import AddBook from './component/EditBook/addbook'
 import OtherUserProfile from './component/ProfileScreen/otherUserProfile'
 import {Provider} from "react-redux";
 import store from "./store";
+import AdminScreen from "./component/AdminScreen/adminScreen";
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
                 <Route path="profile" element={<UserProfile/>}/>
                 <Route path="edit" element={<EditProfile/>}/>
                 <Route path="addbook" element={<AddBook/>}/>
+                <Route path="admin" element={<AdminScreen/>}/>
               </Route>
             </Routes>
           </BrowserRouter>

@@ -1,6 +1,6 @@
 import Book from '../models/bookModel.js'
 
-export const findBooks = () => Book.find()
+export const findBooks = () => Book.find().sort({createdAt: -1})
 export const findBookById = (bid) => Book.findById(bid)
 export const findBookByGoogleId = (gid) => Book.findOne({google_id: gid})
 
