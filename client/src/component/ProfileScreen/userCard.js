@@ -20,7 +20,7 @@ const UserCard = ({
     return (
         <>
             <div className="user-card user-card-flex">
-                <div className="m-5">
+                <div className="m-1">
                     <div className="avatar-position-profile">
                         <LetterAvatars name={profile.name}/>
                     </div>
