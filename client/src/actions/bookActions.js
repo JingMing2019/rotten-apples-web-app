@@ -19,9 +19,13 @@ import {
   BOOK_TOP_RATED_FAIL,
   BOOK_CREATE_REQUEST,
   BOOK_CREATE_SUCCESS,
-  BOOK_CREATE_FAIL, BOOK_CREATE_RESET
+  BOOK_CREATE_FAIL,
+  BOOK_CREATE_RESET,
+  BOOK_USER_RECENT_REVIEWED_REQUEST,
+  BOOK_USER_RECENT_REVIEWED_SUCCESS, BOOK_USER_RECENT_REVIEWED_FAIL
 } from '../constants/bookConstants'
 import {BOOKS_API, GOOGLE_API} from "../constants/apiConstants";
+import {logout} from "./userActions";
 
 export const listBooks = (keyword = '', pageNumber = '') => async (
   dispatch
@@ -64,6 +68,45 @@ export const listBookDetails = (id) => async (dispatch) => {
         error.response && error.response.data.message
           ? error.response.data.message
           : error.message,
+    })
+  }
+}
+
+export const listUserRecentReviewedBooks = (limit) => async (
+    dispatch,
+    getState
+) => {
+  try {
+    dispatch({ type: BOOK_USER_RECENT_REVIEWED_REQUEST })
+
+    const {
+      userLogin: { userInfo },
+    } = getState()
+
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    }
+
+    const { data } = await axios.get(`${BOOKS_API}/recent-reviewed/${limit}/${userInfo._id}`, config)
+
+    dispatch({
+      type: BOOK_USER_RECENT_REVIEWED_SUCCESS,
+      payload: data,
+    })
+  } catch (error) {
+    const message =
+        error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message
+    if (message === 'Not authorized, token failed') {
+      dispatch(logout())
+    }
+    dispatch({
+      type: BOOK_USER_RECENT_REVIEWED_FAIL,
+      payload: message,
     })
   }
 }
@@ -143,12 +186,16 @@ export const register = (book) => async (dispatch, getState) => {
     // dispatch({ type: BOOK_DETAILS_RESET })
   } catch (error) {
     // fetch failed
+    const message =
+        error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message
+    if (message === 'Not authorized, token failed') {
+      dispatch(logout())
+    }
     dispatch({
       type: BOOK_CREATE_FAIL,
-      payload:
-          error.response && error.response.data.message
-              ? error.response.data.message
-              : error.message,
+      payload: message,
     })
   }
 }

@@ -107,7 +107,7 @@ const getTopBooks = asyncHandler(async (req, res) => {
 })
 
 // @desc    Get recent-reviewed books
-// @route   GET /api/books/recent-reviewed
+// @route   GET /api/books/recent-reviewed/:limit
 // @access  Public
 const getRecentReviewedBooks = asyncHandler(async (req, res) => {
   // const books = await Review.find({})
@@ -123,7 +123,27 @@ const getRecentReviewedBooks = asyncHandler(async (req, res) => {
     if (books.length === parseInt(req.params.limit)){
       break
     }
-    console.log(reviews[i].book, allBooks[i]._id)
+    const book = allBooks.find(book => book._id.equals(reviews[i].book))
+    if (!books.includes(book)) {
+      books.push(book)
+    }
+  }
+
+  res.json(books)
+})
+
+// @desc    Get recent-reviewed books
+// @route   GET /api/books/recent-reviewed/:limit/:uid
+// @access  Public
+const getUserRecentReviewedBooks = asyncHandler(async (req, res) => {
+  const reviews = await ReviewDao.findReviewsByUserId(req.params.uid)
+  const allBooks = await BookDao.findBooks()
+
+  let books = []
+  for (let i = 0; i < reviews.length; i++){
+    if (books.length === parseInt(req.params.limit)){
+      break
+    }
     const book = allBooks.find(book => book._id.equals(reviews[i].book))
     if (!books.includes(book)) {
       books.push(book)
@@ -141,5 +161,5 @@ export {
   updateBook,
   getTopBooks,
   getRecentReviewedBooks,
-
+  getUserRecentReviewedBooks
 }

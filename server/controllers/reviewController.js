@@ -38,6 +38,19 @@ const getReviewsByBookId = asyncHandler(async (req, res) => {
     })
 })
 
+// @desc    Fetch list of Reviews
+// @route   GET /api/reviews/user/:uid
+// @access  Public
+const getReviewsByUserId = asyncHandler(async (req, res) => {
+    const reviews = await ReviewDao.findReviewsByUserId(req.params.uid)
+
+    res.json({
+        success: true,
+        count: reviews.length,
+        data: reviews,
+    })
+})
+
 const calculateRatingAndCount = (reviews) => {
     let cumRating = 0
     let count = 0
@@ -111,6 +124,7 @@ export {
     getReviews,
     getReviewById,
     getReviewsByBookId,
+    getReviewsByUserId,
     createBookReview,
     deleteBookReview
 }

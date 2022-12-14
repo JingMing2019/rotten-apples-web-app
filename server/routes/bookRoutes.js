@@ -9,6 +9,7 @@ import {
   createBook,
   getTopBooks,
   getRecentReviewedBooks,
+  getUserRecentReviewedBooks,
 } from '../controllers/bookController.js'
 import {
   authWriter,
@@ -22,6 +23,7 @@ router.route('/')
 
 router.get('/top/:limit', getTopBooks)
 router.get('/recent-reviewed/:limit', getRecentReviewedBooks)
+router.get('/recent-reviewed/:limit/:uid', authToken, getUserRecentReviewedBooks)
 
 router.route('/:id')
     .get(getBookById)

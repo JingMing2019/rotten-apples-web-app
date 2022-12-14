@@ -6,7 +6,7 @@ import {
     getReviewById,
     getReviewsByBookId,
     createBookReview,
-    deleteBookReview,
+    deleteBookReview, getReviewsByUserId,
 } from '../controllers/reviewController.js'
 import {authToken} from "../middlewares/authMiddleware.js";
 
@@ -17,6 +17,10 @@ router.route('/:id').get(getReviewById)
 router.route('/book/:bid')
     .post(authToken, createBookReview)
     .get(getReviewsByBookId)
+
+router.route('/user/:uid')
+    .get(authToken, getReviewsByUserId)
+
 router.route('/book/:bid/:rid').delete(authToken, deleteBookReview)
 
 
