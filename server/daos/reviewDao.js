@@ -12,3 +12,6 @@ export const deleteReview = (rid) => Review.deleteOne({_id: rid})
 export const createReview = (review) => Review.create(review)
 
 export const updateReview = (rid, review) => Review.findByIdAndUpdate(rid, {...review}, {new : true})
+
+export const findRecentReviews = () => Review.find().sort({updatedAt: -1})
+

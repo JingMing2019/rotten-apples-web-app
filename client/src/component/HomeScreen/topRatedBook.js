@@ -15,17 +15,19 @@ const TopRatedBook = () => {
 
   return (
     <>
-      <div className="mt-5 m-3 flex">
+      <div className="mt-3 m-3 flex">
         <h1 className="text-black">Most Popular</h1>
       </div>
-      <Row className="justify-content-center">
-        {books &&
-          books.map((book) => (
-            <Col key={book._id} sm={12} md={6} lg={3}>
-              <TopRatedElement book={book} />
-            </Col>
-          ))}
-      </Row>
+      <div className="container">
+        <Row className="justify-content-between">
+          {books &&
+            books.map((book) => (
+              <Col key={book._id} sm={12} md={6} lg={3}>
+                <TopRatedElement book={book} />
+              </Col>
+            ))}
+        </Row>
+      </div>
     </>
   )
 }

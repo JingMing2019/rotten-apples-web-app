@@ -21,7 +21,7 @@ router.route('/')
     .post(authToken, authWriter, createBook)
 
 router.get('/top/:limit', getTopBooks)
-router.get('/recent-reviewed', getRecentReviewedBooks)
+router.get('/recent-reviewed/:limit', getRecentReviewedBooks)
 
 router.route('/:id')
     .get(getBookById)

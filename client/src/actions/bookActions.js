@@ -68,11 +68,11 @@ export const listBookDetails = (id) => async (dispatch) => {
   }
 }
 
-export const listRecentReviewedBooks = () => async (dispatch) => {
+export const listRecentReviewedBooks = (limit) => async (dispatch) => {
   try {
     dispatch({ type: BOOK_RECENT_REVIEWED_REQUEST })
 
-    const { data } = await axios.get(`${BOOKS_API}/recent-reviewed`)
+    const { data } = await axios.get(`${BOOKS_API}/recent-reviewed/${limit}`)
 
     dispatch({
       type: BOOK_RECENT_REVIEWED_SUCCESS,

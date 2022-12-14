@@ -1,6 +1,6 @@
 import asyncHandler from 'express-async-handler' // asyncHandler is a middleware that is used to wrap async functions
-import { Review } from '../models/reviewModel.js'
 import * as BookDao from "../daos/bookDao.js";
+import * as ReviewDao from "../daos/reviewDao.js";
 import {authAdmin, authWriter} from "../middlewares/authMiddleware.js";
 
 // @desc    Fetch all books
@@ -110,10 +110,25 @@ const getTopBooks = asyncHandler(async (req, res) => {
 // @route   GET /api/books/recent-reviewed
 // @access  Public
 const getRecentReviewedBooks = asyncHandler(async (req, res) => {
-  const books = await Review.find({})
-    .sort({ createdAt: -1 })
-    .populate('book')
-    .limit(4)
+  // const books = await Review.find({})
+  //   .sort({ updatedAt: -1 })
+  //   .populate('book')
+  //   .limit(req.params.limit)
+
+  const reviews = await ReviewDao.findRecentReviews()
+  const allBooks = await BookDao.findBooks()
+
+  let books = []
+  for (let i = 0; i < reviews.length; i++){
+    if (books.length === parseInt(req.params.limit)){
+      break
+    }
+    console.log(reviews[i].book, allBooks[i]._id)
+    const book = allBooks.find(book => book._id.equals(reviews[i].book))
+    if (!books.includes(book)) {
+      books.push(book)
+    }
+  }
 
   res.json(books)
 })

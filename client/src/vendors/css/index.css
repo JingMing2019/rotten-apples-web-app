@@ -45,13 +45,16 @@ body {
     overflow: hidden;
 }
 .homepage-card-img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
     width: 175px;
     height: 210px;
     overflow: hidden;
     object-fit: cover;
 }
 .homepage-card-img img{
-    width: 175px;
+    width: 176px;
     height: 256px !important;
     overflow: hidden;
     object-fit: cover;

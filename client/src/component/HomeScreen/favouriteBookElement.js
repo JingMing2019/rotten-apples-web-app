@@ -4,7 +4,6 @@ import { Button, Card } from 'react-bootstrap'
 import sampleCover from "../../vendors/img/book-cover-sample.png"
 
 const FavouriteBookElement = ({ book }) => {
-  console.log(book)
   return (
     <Card className="my-2 p-2 border-0 text-center same-width">
       <Link to={`/book/${book.book}`}>

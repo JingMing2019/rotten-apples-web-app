@@ -12,9 +12,12 @@ const TopRatedElement = ({ book }) => {
               src={book.image_url ? book.image_url : sampleCover}
               alt="book_image_url"
             />
-            <div>{book.name}</div>
           </div>
         </Link>
+        <div className="fw-bold text-truncate">
+          {book.title}
+        </div>
+        {book.rating && <div className="fw-bold">{book.rating.toFixed(1)}</div>}
       </div>
     </>
   )
