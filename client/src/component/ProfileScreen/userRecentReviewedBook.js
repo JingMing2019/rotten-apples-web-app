@@ -8,7 +8,6 @@ const UserRecentReviewedBook = () => {
   const dispatch = useDispatch()
   const bookUserRecentReviewed = useSelector((state) => state.bookUserRecentReviewed)
   const { books } = bookUserRecentReviewed
-    console.log(books)
 
   const userLogin = useSelector((state) => state.userLogin)
   const { userInfo } = userLogin

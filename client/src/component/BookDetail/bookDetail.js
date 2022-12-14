@@ -5,9 +5,9 @@ const BookDetail = ({ book }) => {
 
   return (
     <>
-      <section className="header height-auto">
-        <div className="container ps-0 pe-0">
-          <div className="row">
+      <section className="header">
+        <div className="container">
+          <div className="row justify-content-around align-items-center">
             {book && <BookInfo bookInfo={book}/>}
           </div>
         </div>

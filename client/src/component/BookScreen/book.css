@@ -2,24 +2,33 @@
 /*    max-width: 1550px;*/
 /*}*/
 
+.book-description {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 .padding-right{
     padding-right: -6.5rem!important;
 }
 
 .img-title-pos {
     z-index: 1;
-    bottom: 45%;
-    left: 16%;
-    max-width: 50%;
-    top: 50px;
+    /*bottom: 45%;*/
+    /*left: 16%;*/
+    max-width: 80%;
+    /*top: 50px;*/
 }
 
 .banner-height {
-    height: 400px;
-    width: 300px;
-    margin-right: 10%;
+    height: 400px !important;
+    width: 300px !important;
+    display: block;
+    margin: auto;
+    padding: 12px;
 }
-
 
 
 .book-title {
