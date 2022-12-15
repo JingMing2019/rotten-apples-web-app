@@ -27,3 +27,4 @@
 
 ### UML Class Diagram
 - [UML Class for Rotten Apples](https://lucid.app/lucidchart/26f5a064-924e-4875-af93-f73b2b875baa/edit?view_items=6aya1aSV1m~M&invitationId=inv_5ccc50ea-0f4e-4e97-9a4c-1e93a29dd25c)
+- ![UML Image](https://github.com/ylwn29/rotten-apples-web-app/blob/main/UML-Rotten_Apples_Web_App.png)
