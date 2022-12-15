@@ -36,15 +36,16 @@ export const findUsersByOwnedBooksId = (bid) => User.find({
     }
 })
 
-export const findUsersByLikedAndOwnedBooksId = (bid) => User.find({
-    'likedBooks': {
-        $elemMatch: {
-            'book': bid
-        }
-    },
-    'ownedBooks': {
-        $elemMatch: {
-            'book': bid
-        }
-    }
+// find users who have `bid` in their likedBooks OR ownedBooks field
+export const findUsersByLikedAndOwnedBooksId = (bid) => User.find(
+    {
+        $or:
+            [
+                {'likedBooks': {
+                    $elemMatch: {'book': bid}}
+                },
+                {'ownedBooks': {
+                    $elemMatch: {'book': bid}}
+                },
+            ]
 })
