@@ -17,13 +17,13 @@
 - [Login page](https://rotten-apples-react-web-app.netlify.app/login)
 - User profile page
 - Edit profile page
+- Admin page: admin users can delete books from app own database.
 
 ### User Roles
 - User: search Google Books, read book details and reviews. 
 - Reader: like book, write book reviews, delete his/her own reviews.
 - Writer: add books to app own database.
-- Admin: delete any book reviews.
+- Admin: delete any book reviews and delete any books.
 
 ### UML Class Diagram
 - [UML Class for Rotten Apples](https://lucid.app/lucidchart/26f5a064-924e-4875-af93-f73b2b875baa/edit?view_items=6aya1aSV1m~M&invitationId=inv_5ccc50ea-0f4e-4e97-9a4c-1e93a29dd25c)
-
